@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.mapper.PastMapper">
+    <resultMap id="Past" type="com.game.pojo.PastUser">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <id column="gamewechat" jdbcType="VARCHAR" property="gamewechat" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="time" jdbcType="INTEGER" property="time" />
+        <result column="one" jdbcType="VARCHAR" property="one" />
+        <result column="two" jdbcType="VARCHAR" property="two" />
+        <result column="three" jdbcType="VARCHAR" property="three" />
+        <result column="date" jdbcType="VARCHAR" property="date" />
+    </resultMap>
+
+
+    <insert id="SaveAll" parameterType="com.game.pojo.PastUser">
+        insert into past
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            gamewechat,
+            username,
+            time,
+            one,
+            two,
+            three,
+            date
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{gamewechat},
+            #{username},
+            #{time},
+            #{one},
+            #{two},
+            #{three},
+            #{date},
+        </trim>
+    </insert>
+</mapper>

@@ -1,0 +1,14 @@
+
+mybatis:
+  mapper-location: classpath:com/game/mapper/*.xml
+  type-aliases-package: com.game.pojo
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/game?serverTimezone=CTT&characterEncoding=UTF8
+    username: root
+    password: diyikeji
+
+
+server:
+  port: 7117

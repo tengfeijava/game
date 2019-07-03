@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.mapper.GameMapper">
+    <resultMap id="GameUsre" type="com.game.pojo.GameUsre">
+        <id column="gamewechat" jdbcType="VARCHAR" property="gamewechat" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="time" jdbcType="INTEGER" property="time" />
+        <result column="moneyone" jdbcType="VARCHAR" property="moneyone" />
+        <result column="moneytwo" jdbcType="VARCHAR" property="moneytwo" />
+        <result column="moneythree" jdbcType="VARCHAR" property="moneythree" />
+    </resultMap>
+
+    <select id="Gamewechat" parameterType="java.lang.String" resultType="java.lang.String">
+        select gamewechat from gameuser where gamewechat = #{gamewechat}
+    </select>
+
+
+    <insert id="NameWechat" parameterType="java.lang.String">
+        insert into gameuser
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            gamewechat,
+            time,
+            username,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{gamewechat},
+            #{time},
+            #{username},
+        </trim>
+    </insert>
+    
+    <select id="FindaMewechat" parameterType="java.lang.String" resultType="GameUsre">
+        select
+           gamewechat,
+           username,
+           time,
+           moneyone,
+           moneytwo,
+           moneythree
+           from gameuser  where gamewechat = #{gamewechat};
+    </select>
+
+    <!--<insert id="save" parameterType="com.game.pojo.GameUsre">-->
+        <!--insert into gameuser-->
+        <!--<trim prefix="(" suffix=")" suffixOverrides=",">-->
+            <!--gamewechat,-->
+            <!--username,-->
+            <!--time,-->
+            <!--moneyone,-->
+            <!--moneytwo,-->
+            <!--moneythree-->
+        <!--</trim>-->
+        <!--<trim prefix="values (" suffix=")" suffixOverrides=",">-->
+            <!--#{gamewechat},-->
+            <!--#{username},-->
+            <!--#{time},-->
+            <!--#{moneyone},-->
+            <!--#{moneytwo},-->
+            <!--#{moneythree},-->
+        <!--</trim>-->
+    <!--</insert>-->
+
+    <update id="save" parameterType="com.game.pojo.GameUsre">
+         update gameuser set
+         time = #{time,jdbcType=INTEGER},
+         moneyone = #{moneyone,jdbcType=VARCHAR}
+          where gamewechat = #{gamewechat,jdbcType=VARCHAR}
+    </update>
+
+    <update id="Moneytwo" parameterType="com.game.pojo.GameUsre">
+        update gameuser set
+         time = #{time,jdbcType=INTEGER},
+         moneytwo = #{moneytwo,jdbcType=VARCHAR}
+          where gamewechat = #{gamewechat,jdbcType=VARCHAR}
+    </update>
+
+    <update id="Moneythree" parameterType="com.game.pojo.GameUsre">
+        update gameuser set
+         time = #{time,jdbcType=INTEGER},
+         moneythree = #{moneythree,jdbcType=VARCHAR}
+          where gamewechat = #{gamewechat,jdbcType=VARCHAR}
+    </update>
+
+    <select id="FindAll" resultType="GameUsre">
+        select
+             gamewechat,
+             username,
+             time,
+             moneyone,
+             moneytwo,
+             moneythree
+              from gameuser
+    </select>
+
+    <delete id="DeleteAll" >
+        delete from gameuser
+    </delete>
+</mapper>
