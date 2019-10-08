@@ -7,7 +7,7 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/game?serverTimezone=CTT&characterEncoding=UTF8
     username: root
-    password: diyikeji
+    password: root
 
 
 server:
